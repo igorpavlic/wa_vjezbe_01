@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const app = express(); // u varijablu app pohranjujemo objekt koji predstavlja Express aplikaciju
 const PORT = 3000; // port na kojem će poslužitelj slušati zahtjeve
 
@@ -22,7 +23,17 @@ const korisnici = [
 ];
 
 app.get('/', (req, res) => {
-res.send('Hello, world!');
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+// Nova GET ruta /about
+app.get('/about', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'about.html'));
+});
+
+// Nova GET ruta /users
+app.get('/users', (req, res) => {
+    res.json(korisnici);
 });
 
 app.listen(PORT, error => {
