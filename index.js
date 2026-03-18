@@ -3,6 +3,8 @@ const path = require('path');
 const app = express(); // u varijablu app pohranjujemo objekt koji predstavlja Express aplikaciju
 const PORT = 3000; // port na kojem će poslužitelj slušati zahtjeve
 
+app.use(express.json());
+
 // Polje korisnika
 const korisnici = [
     {
